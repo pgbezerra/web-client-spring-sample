@@ -16,13 +16,15 @@ import br.com.pgbezerra.product.model.Product;
 public class ProductController {
 	
 	@GetMapping(value = "/{productId}")
-	public ResponseEntity<Product> findById(@PathVariable(value = "productId") Long productId){
+	public ResponseEntity<Product> findById(@PathVariable(value = "productId") Long productId) throws InterruptedException{
 		Product product = new Product(1L, "Bed", "This is not realy bad");
+		Thread.sleep(5000);
 		return ResponseEntity.ok(product);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Product> insert(@RequestBody Product product){
+	public ResponseEntity<Product> insert(@RequestBody Product product) throws InterruptedException{
+		Thread.sleep(3000);
 		return ResponseEntity.status(HttpStatus.CREATED).body(product);
 	}
 
