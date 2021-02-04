@@ -1,5 +1,7 @@
 package br.com.pgbezerra.consumer.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,11 @@ public class ProductPriceController {
 	@GetMapping(value = "/product/{productId}/price")
 	public ResponseEntity<ProductPrice> getPrice(@PathVariable(value = "productId") Long productId){
 		return ResponseEntity.ok(productPriceService.getProductPrice(productId));
+	}
+	
+	@GetMapping(value = "/products")
+	public ResponseEntity<List<ProductPrice>> findAll(){
+		return ResponseEntity.ok(productPriceService.findAll());
 	}
 	
 	@PostMapping(value = "/product")
